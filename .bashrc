@@ -225,3 +225,4 @@ fi
 
 ## Define any user-specific variables you want here.
 source ~/.bashrc_custom
+source /home/cherukumilli/ec2_custom/dotfiles/.ec2

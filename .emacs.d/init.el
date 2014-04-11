@@ -75,3 +75,35 @@
 (require 'jade-mode)    
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
+;; --------------------------------
+;; Octave config
+;; -------------------------------
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode 1)
+            (if (eq window-system 'x)
+                (font-lock-mode 1))))
+
+(defun RET-behaves-as-LFD ()
+  (let ((x (key-binding "\C-j")))
+    (local-set-key "\C-m" x)))
+(add-hook 'octave-mode-hook 'RET-behaves-as-LFD)
+
+(add-hook 'inferior-octave-mode-hook
+          (lambda ()
+            (turn-on-font-lock)
+            (define-key inferior-octave-mode-map [up]
+              'comint-previous-input)
+            (define-key inferior-octave-mode-map [down]
+              'comint-next-input)))
+
+;; uncomment lines below if gnuserv is setup
+;;(autoload 'octave-help "octave-hlp" nil t)
+;;(require 'gnuserv)
+;;(gnuserv-start)
