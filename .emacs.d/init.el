@@ -107,3 +107,26 @@
 ;;(autoload 'octave-help "octave-hlp" nil t)
 ;;(require 'gnuserv)
 ;;(gnuserv-start)
+
+;; -------------------------------------------------------------------------
+;; web-mode.el is an autonomous emacs major-mode for editing web templates:
+;; HTML documents embedding parts (CSS / JavaScript) and blocks (client / server side) 
+;; -------------------------------------------------------------------------
+(require 'web-mode) 
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode)) 
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+;; Using web-mode for editing plain HTML files can be done this way
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; A specific engine can be forced with web-mode-engines-alist.
+(setq web-mode-engines-alist 
+    '(("php" . "\\.phtml\\'") 
+      ("blade" . "\\.blade\\.")) 
+)
+
