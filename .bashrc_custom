@@ -1,1 +1,2 @@
-
+export PATH=$PATH:$HOME/google_appengine/
+export PATH=$PATH:$HOME/tools/android-studio/sdk/tools
