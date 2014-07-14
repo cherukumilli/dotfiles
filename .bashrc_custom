@@ -1,4 +1,6 @@
-source /home/cherukumilli/ec2_custom/dotfiles/.ec2
+if [ -e $HOME/ec2_custom/dotfiles/.ec2 ]; then
+   source $HOME/ec2_custom/dotfiles/.ec2
+fi
 export ANDROID_SDK=$HOME/tools/android-studio/sdk
 export PATH=$PATH:$HOME/google_appengine
 export PATH=$PATH:$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
